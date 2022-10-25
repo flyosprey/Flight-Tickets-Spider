@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scrape form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/home_page/home_page.css') }}" />
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Find tickets</h1>
+      <form method="post" action="http://127.0.0.1:5000/home_page">
+        <input type="text" name="from_city_code" style="width: 300px;" pattern="[\s\w]+" required placeholder="From city code" /><br />
+        <input type="text" name="to_city_code" style="width: 300px;" pattern="[\s\w]+" required placeholder="To city code" /><br />
+        <input type="text" name="arrival_date" style="width: 300px;" pattern="\d{2}-\d{2}-\d{4}" required placeholder="Arrival dd-mm-yyyy" /><br />
+        <br />
+        <input id="show_data" type="submit" value="Submit" />
+      </form>
+    </div>
+    {% if results %}
+      <div class="main-block">
+          <h4>{{ results }}</h4>
+      </div>
+    {% endif %}
+  </body>
+</html>
